@@ -10,7 +10,7 @@
   --lavender:  #C9C3E4;   /* fading sky */
   --sky-blue:  #A9C1DA;   /* morning blue */
   --ink:       #46405A;   /* soft plum-grey text */
-  --ink-soft:  rgba(70,64,90,.62);
+  --ink-soft:  rgba(70,64,90,.85);
 
   --honey:     #D9A15C;   /* abundance accent */
   --sage:      #8FAE87;   /* family accent */
@@ -30,12 +30,12 @@ body{
   color:var(--ink);
   background:var(--cream);
   overflow-x:hidden;
-  font-weight:300;
+  font-weight:500;
 }
 
 h1,h2,blockquote{
   font-family:'Fraunces', serif;
-  font-weight:500;
+  font-weight:600;
   letter-spacing:-.01em;
 }
 
@@ -43,9 +43,33 @@ h1,h2,blockquote{
 
 @media (prefers-reduced-motion: reduce){
   *{ animation-duration:.001s !important; animation-iteration-count:1 !important; transition-duration:.001s !important; scroll-behavior:auto !important; }
+  #bg-video-wrap{ display:none; }
+  .sky{ opacity:1; }
 }
 
-/* ---------- ambient sky ---------- */
+/* ---------- background video ---------- */
+#bg-video-wrap{
+  position:fixed;
+  inset:0;
+  z-index:-3;
+  overflow:hidden;
+  pointer-events:none;
+  background:var(--cream); /* shows while the video loads */
+}
+
+#bg-video-wrap iframe{
+  position:absolute;
+  top:50%;
+  left:50%;
+  width:100vw;
+  height:56.25vw;       /* 16:9 */
+  min-height:100vh;
+  min-width:177.78vh;   /* 16:9, covers portrait screens too */
+  transform:translate(-50%,-50%);
+  pointer-events:none;
+}
+
+/* ---------- ambient sky (now a soft tint over the video) ---------- */
 .sky{
   position:fixed;
   inset:0;
@@ -55,7 +79,8 @@ h1,h2,blockquote{
     var(--cream) 35%,
     var(--cream) 65%,
     var(--lavender) 100%);
-  transition:filter .6s var(--ease);
+  opacity:.55;
+  transition:filter .6s var(--ease), opacity .6s var(--ease);
 }
 
 #motes{
@@ -81,7 +106,8 @@ h1,h2,blockquote{
 
 /* ---------- eyebrow / shared label ---------- */
 .eyebrow{
-  font-size:13px;
+  font-size:16px;
+  font-weight:600;
   letter-spacing:.32em;
   text-transform:uppercase;
   color:var(--ink-soft);
@@ -105,33 +131,35 @@ section, footer{
 #hero{ gap:2px; }
 
 #greeting{
-  font-size:15px;
+  font-size:18px;
   letter-spacing:.05em;
   color:var(--ink-soft);
   margin-bottom:6px;
-  font-weight:400;
+  font-weight:600;
 }
 
 #fullDate{
-  font-size:13px;
+  font-size:16px;
   color:var(--ink-soft);
   margin-bottom:46px;
-  opacity:.8;
+  font-weight:600;
+  opacity:.9;
 }
 
 #hero h1{
-  font-size:clamp(40px, 7vw, 80px);
+  font-size:clamp(49px, 8.5vw, 98px);
   line-height:1.08;
   font-style:italic;
-  font-weight:400;
+  font-weight:600;
   color:var(--ink);
   margin-bottom:30px;
 }
 
 .hero-line{
-  max-width:520px;
-  font-size:17px;
-  line-height:1.9;
+  max-width:560px;
+  font-size:21px;
+  font-weight:600;
+  line-height:1.8;
   color:var(--ink-soft);
   margin-bottom:60px;
 }
@@ -172,7 +200,8 @@ section, footer{
 }
 
 .breathe-label{
-  font-size:12px;
+  font-size:15px;
+  font-weight:600;
   letter-spacing:.28em;
   text-transform:uppercase;
   color:var(--ink-soft);
@@ -185,7 +214,8 @@ section, footer{
   flex-direction:column;
   align-items:center;
   gap:10px;
-  font-size:11px;
+  font-size:13px;
+  font-weight:600;
   letter-spacing:.3em;
   text-transform:uppercase;
   color:var(--ink-soft);
@@ -209,9 +239,9 @@ section, footer{
 /* ---------- DAILY TRUTH ---------- */
 #focus blockquote{
   max-width:780px;
-  font-size:clamp(28px, 4vw, 44px);
+  font-size:clamp(34px, 4.9vw, 54px);
   font-style:italic;
-  font-weight:400;
+  font-weight:600;
   line-height:1.5;
   color:var(--ink);
 }
@@ -230,8 +260,8 @@ section, footer{
 }
 
 .pillar h2{
-  font-size:clamp(30px, 4vw, 46px);
-  font-weight:500;
+  font-size:clamp(37px, 4.9vw, 56px);
+  font-weight:600;
   margin-bottom:50px;
   line-height:1.25;
 }
@@ -252,8 +282,9 @@ section, footer{
 .whispers li{
   position:relative;
   padding-left:28px;
-  font-size:18px;
-  line-height:1.7;
+  font-size:22px;
+  font-weight:600;
+  line-height:1.65;
   color:var(--ink);
 }
 
@@ -275,7 +306,8 @@ section, footer{
 
 /* ---------- VISION BOARD ---------- */
 .vision-title{
-  font-size:clamp(32px, 4.5vw, 50px);
+  font-size:clamp(39px, 5.5vw, 61px);
+  font-weight:600;
   margin-bottom:60px;
 }
 
@@ -323,15 +355,16 @@ section, footer{
 
 .vision-card h3{
   font-family:'Fraunces', serif;
-  font-size:20px;
-  font-weight:500;
+  font-size:24px;
+  font-weight:600;
   margin-bottom:12px;
   color:var(--ink);
 }
 
 .vision-card p{
-  font-size:14.5px;
-  line-height:1.7;
+  font-size:18px;
+  font-weight:600;
+  line-height:1.65;
   color:var(--ink-soft);
 }
 
@@ -342,16 +375,17 @@ section, footer{
 }
 
 #closing h2{
-  font-size:clamp(28px, 4vw, 42px);
+  font-size:clamp(34px, 4.9vw, 51px);
   font-style:italic;
-  font-weight:400;
+  font-weight:600;
   line-height:1.4;
   margin-bottom:24px;
   max-width:640px;
 }
 
 #closing p{
-  font-size:15px;
+  font-size:18px;
+  font-weight:600;
   letter-spacing:.05em;
   color:var(--ink-soft);
 }
@@ -359,5 +393,5 @@ section, footer{
 /* ---------- responsive ---------- */
 @media (max-width:600px){
   section, footer{ padding:90px 22px; }
-  .whispers li{ font-size:16.5px; }
+  .whispers li{ font-size:20px; }
 }
