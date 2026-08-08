@@ -29,7 +29,7 @@
     "Everything is working out for me.",
     "I am worthy of the life I am building.",
     "Money, love and peace flow to me easily.",
-    "My family and I are safe, healthy and held.",
+    "My family is united, protected, and blessed by a higher power.",
     "My business grows because I show up with intention.",
     "I am allowed to rest without guilt.",
     "I trust the timing of my life.",
